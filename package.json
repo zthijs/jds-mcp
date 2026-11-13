@@ -1,0 +1,36 @@
+{
+  "name": "jds-mcp",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "jds-mcp": "dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "bun run src/main.ts",
+    "dev:http": "bun run src/http.ts",
+    "build": "bun build ./src/main.ts --outdir dist --target node && chmod +x dist/main.js",
+    "build:http": "bun build ./src/http.ts --outdir dist --target bun --minify",
+    "start": "node dist/main.js",
+    "start:http": "bun dist/http.js",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint --write",
+    "format": "biome format --write",
+    "check": "biome check --write",
+    "test:live": "JDS_LIVE=1 bun test src/live.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "node-html-parser": "^9.0.5",
+    "zod": "^4.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.3",
+    "@modelcontextprotocol/client": "^2.4.0",
+    "@types/bun": "latest",
+    "typescript": "^5.0.0"
+  }
+}
